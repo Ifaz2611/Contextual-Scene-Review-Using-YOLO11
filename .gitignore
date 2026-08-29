@@ -1,0 +1,23 @@
+# Local environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local datasets, model outputs, and release staging
+data/
+runs/
+release-assets/
+docs/presentation/tran-si-nam-defense-slides/
+*.pt
+*.onnx
+*.engine
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# md file
+agent.md
