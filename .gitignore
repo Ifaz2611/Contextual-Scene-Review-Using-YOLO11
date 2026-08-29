@@ -6,6 +6,7 @@ __pycache__/
 
 # Local datasets, model outputs, and release staging
 data/
+dataset/
 runs/
 release-assets/
 docs/presentation/tran-si-nam-defense-slides/
