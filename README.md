@@ -1,42 +1,72 @@
 ﻿# Contextual Scene Review
 
-A YOLO11-based research project for contextual scene review in public-area imagery. The model localizes people and labels them as `person` or `person_with_object` for human review workflows.
+A research prototype built on **YOLO11** for contextual scene analysis in public-area imagery. The model detects and localizes individuals, labeling them as either `person` or `person_with_object` to support **human-in-the-loop review workflows**.
+
+---
 
 ## Overview
 
-This repository demonstrates a research prototype for reviewing public-space scenes with a human-in-the-loop. It focuses on contextual understanding rather than threat classification or identity inference.
+This repository demonstrates a **research-focused system** for reviewing public-space scenes.  
+Key design principles:  
+- Prioritizes **contextual understanding** over threat detection.  
+- Avoids identity recognition and automated decision-making.  
+- Ensures **human oversight** remains central to the workflow.  
+
+---
 
 ## Labels
 
-- `person`
-- `person_with_object`
+The model outputs two simple categories:  
+- `person`  
+- `person_with_object`  
+
+---
 
 ## Dataset
 
-The project uses a YOLO-format dataset in `data/dataset` with train/valid/test splits. The original dataset is available from the linked Google Drive folder and should be reviewed before reuse.
+- Dataset follows **YOLO format** with train/valid/test splits.  
+- Located in: `data/dataset`  
+- Original dataset available via [Google Drive](https://drive.google.com/file/d/1rLZcHEgoo1Y3S8jL9LBE2pGXdc3-ey5G/view?usp=sharing).  
+- Review dataset carefully before reuse to ensure suitability for your application.  
 
-## Quick start
+---
+
+## Quick Start
+
+Set up environment and run inference:
 
 ```bash
 python -m venv .venv
 . .venv/Scripts/activate
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
+
 python scripts/inference.py --model path/to/best.pt --source path/to/image-or-video --confidence 0.35
 ```
 
+---
+
 ## Training
+
+Train a YOLO11 variant with your dataset:
 
 ```bash
 python scripts/train.py --variant yolo11s --data config/data.yaml
 ```
 
-## Responsible use
+---
 
-- Human review remains required.
-- Do not use the model for identity recognition or automated punitive decisions.
-- Validate locally before deployment and document errors, bias, and edge cases.
+## Responsible Use
+
+- **Human review is mandatory** — this system is not autonomous.  
+- Do **not** use for identity recognition or punitive automation.  
+- Validate thoroughly before deployment.  
+- Document errors, bias, and edge cases to ensure transparency.  
+
+---
 
 ## License
 
-This project is distributed under the AGPL-3.0 license.
+Distributed under the **GNU 3.0** license.  
+
+---
