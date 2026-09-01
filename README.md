@@ -20,7 +20,7 @@ dataset/
 
 Classes `config/data.yaml:6` :
 - `0: person`
-- `1: person_with_object`
+- `1: person_with_Dangerous_object`
 
 `config/data.yaml:1` is fixed to `path: dataset` (was `../data/dataset`). If you move the project, keep `path: dataset` when running from project root, or use absolute `C:/.../dataset`.
 
