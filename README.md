@@ -1,6 +1,6 @@
 ﻿# Contextual Scene Review — YOLO11
 
-Research prototype on **YOLO11** for contextual scene analysis. Detects `person` vs `person_with_object` to support **human-in-the-loop** review — no identity recognition, no automated decisions.
+Research prototype on **YOLO11** for contextual scene analysis. Detects `person` vs `person_with_Dangerous_object` to support **human-in-the-loop** review — no identity recognition, no automated decisions.
 
 Verified on **Windows 11, AMD Ryzen 7 5800H (8C/16T), 15.4GB RAM, Radeon Graphics (no NVIDIA), torch 2.13.0+cpu, Python 3.14.5** at ~63ms/image `640x640` CPU.
 
@@ -25,6 +25,13 @@ Classes `config/data.yaml:6` :
 `config/data.yaml:1` is fixed to `path: dataset` (was `../data/dataset`). If you move the project, keep `path: dataset` when running from project root, or use absolute `C:/.../dataset`.
 
 Source: Roboflow export, `512x512` stretch, labels normalized `class cx cy w h`.
+
+
+The project uses a YOLO-format dataset in `data/dataset` with train/valid/test splits. The original dataset is available from the linked Google Drive folder and should be reviewed before reuse.
+- Dataset follows **YOLO format** with train/valid/test splits.  
+- Located in: `data/dataset`  
+- Original dataset available via [Google Drive](https://drive.google.com/file/d/1rLZcHEgoo1Y3S8jL9LBE2pGXdc3-ey5G/view?usp=sharing).  
+- Review dataset carefully before reuse to ensure suitability for your application.  
 
 ---
 
