@@ -1,8 +1,9 @@
-path: ../data/dataset
+path: dataset
 train: train/images
 val: valid/images
 test: test/images
 
+nc: 2
 names:
   0: person
-  1: person_with_object
+  1: person_with_Dangerous_object

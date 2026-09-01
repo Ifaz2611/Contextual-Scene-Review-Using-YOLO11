@@ -11,7 +11,7 @@ from ultralytics import YOLO
 
 ENGLISH_LABELS = {
     0: "person",
-    1: "person_with_object",
+    1: "person_with_Dangerous_object",
 }
 
 
@@ -38,7 +38,9 @@ def main() -> int:
         raise FileNotFoundError(f"Model file not found: {model_path}")
 
     model = YOLO(str(model_path))
-    model.model.names = ENGLISH_LABELS
+    # only override for 2-class fine-tuned weights, COCO pretrained has 80 classes
+    if len(getattr(model.model, "names", {})) == 2:
+        model.model.names = ENGLISH_LABELS
     model.predict(
         source=args.source,
         conf=args.confidence,
