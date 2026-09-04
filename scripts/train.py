@@ -46,12 +46,23 @@ def main() -> int:
     args = parse_args()
     selected = dict(VARIANTS[args.variant])
     model_name = selected.pop("model")
+    # mini-PC safety: if training on CPU, batch=8 imgsz=832 is very slow and
+    # may OOM on 15GB RAM. Warn and auto-reduce unless user overrides via
+    # editing file. Keep 832 for GPU, use 640 for CPU if device==cpu.
+    is_cpu = args.device == "cpu"
+    batch = 8
+    imgsz = 832
+    if is_cpu:
+        batch = 4
+        imgsz = 640
+        print(f"[info] CPU training detected — auto-adjusting batch={batch} imgsz={imgsz} for mini PC (edit scripts/train.py to override)")
+
     model = YOLO(model_name)
     model.train(
         data=args.data,
         epochs=150,
-        batch=8,
-        imgsz=832,
+        batch=batch,
+        imgsz=imgsz,
         optimizer="auto",
         device=args.device,
         project=args.project,
